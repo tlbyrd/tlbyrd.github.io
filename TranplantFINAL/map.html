@@ -1,0 +1,81 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="map.css">
+  <meta charset = "UTF-8">
+  <meta name="keywords" content="HTML, CSS, Travel, Student, New York, Transplant">
+  <link rel="icon" href="source/icon.png">
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+  <title>Transplant: Map It!</title>
+  <link href="style/styles.css" rel="stylesheet" type="text/css" />
+  <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+  <script
+  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+<script src="js/map1.js"></script>
+
+</head>
+
+<body>
+
+ <img src="source/logo.png"></src> 
+
+
+ <div class="menu">
+   <div id="form-main">
+    <form action="FormA.php" method="post" id="form">
+      <input type="text" class="button"  name="name" placeholder="Name" >
+      <input type="text" class="button"  name="email" placeholder="Email">
+      <input type="text"  class="button" name="facebook" placeholder="Facebook">
+      <input type="text" id="address" class="button" value="Hometown" onClick="select()">
+      <input id="add" class="button" type="button" value="Plant" onclick="codeAddress()">
+
+
+    </form>
+  </div>
+</div>
+
+<div class="map" id="map"></div>
+
+<script>
+
+  google.maps.event.addDomListener(window, 'load', initialize); 
+  var myLatlng = new google.maps.LatLng(40.723301,-73.994522);
+
+  var contentString = '<div id="content">'+'<br>'+'</div>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString,
+    maxWidth: 200
+  });
+  function codeAddress() {
+
+    var address = document.getElementById('address').value;
+    geocoder.geocode( {'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Tevin Byrd | tevinbyrd@gmail.com | facebook/tevin.byrd'
+        });
+        var marker = new google.maps.Marker({
+            //map: map,icon:icon1,
+
+
+            position: results[0].geometry.location
+          });marker.setMap(map);google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+          });
+        } else {
+          alert('No Place Found');
+        }
+      });
+  }
+  function select() {
+    document.getElementById("address").select();
+  }
+</script>
+</body>
+</html>

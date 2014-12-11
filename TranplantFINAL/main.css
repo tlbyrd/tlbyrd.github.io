@@ -1,0 +1,39 @@
+body {
+	background: url("source/Home4.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: courier new;
+}
+
+p {
+	margin-top: 180px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size:.6em;
+	color: white;
+	width: 30em;
+	height: 2em;
+	border: .2em solid #F50;
+	border-radius: 1em;
+	letter-spacing: 1px;
+	padding: 3em 3em 10em 3em;
+}
+
+#option {
+	text-decoration: none;
+	margin: auto;
+	display: block;
+	margin-top: 2%;
+	height: 3em;
+	border-radius: .5em;
+	color: white;
+	background-color:#FF8000;
+	font-family:courier;
+}
+
+a {
+	margin: auto;
+	text-decoration: none;
+}
